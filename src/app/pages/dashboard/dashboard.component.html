@@ -1,0 +1,72 @@
+<ng-container *ngIf="(coins | async); let coinList">
+    <h2 class="cabecera-title">
+        Coins 
+        
+        <button class="button button-add" (click)="addCoin()">
+        <mat-icon>library_add</mat-icon>
+        Añadir
+    </button></h2>
+    <div class="container">
+        <div>
+            
+            
+        </div>
+        <mat-card class="coin-card" *ngFor="let coin of coinList">
+            <mat-card-title>
+                {{ coin.acronym }}
+            </mat-card-title>
+            <mat-card-content>
+                {{ coin.name }}
+            </mat-card-content>
+            
+            <mat-card-footer>
+                <mat-card-actions>
+                    <button class="button button-edit" mat-icon-button (click)="editCoin(coin)">
+                        <mat-icon aria-hidden="false" aria-label="edit">edit</mat-icon> Editar
+                    </button>
+                    <button class="button button-delete" mat-icon-button (click)="deleteCoin(coin)">
+                        <mat-icon aria-hidden="false" aria-label="delete">delete</mat-icon> Eliminar
+                    </button>
+                </mat-card-actions>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+
+</ng-container>
+
+<ng-container *ngIf="(portfolios | async); let portfolioList">
+    <h2 class="cabecera-title">
+        Portfolios 
+        
+        <button class="button button-add" (click)="addPortFolio()">
+        <mat-icon>library_add</mat-icon>
+        Añadir
+    </button></h2>
+    <div class="container">
+
+        <mat-card class="coin-card" *ngFor="let item of portfolioList">
+            <mat-card-header>
+                <mat-card-title>
+                    {{ item.name }}
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-footer>
+                <mat-card-actions>
+                    <button class="button button-edit" mat-icon-button (click)="editPortfolio(item)">
+                        <mat-icon aria-hidden="false" aria-label="edit">edit</mat-icon> Editar
+                    </button>
+                    <button class="button button-delete" mat-icon-button (click)="deletePortFolio(item)">
+                        <mat-icon aria-hidden="false" aria-label="delete">delete</mat-icon> Eliminar
+                    </button>
+                </mat-card-actions>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+
+</ng-container>
+
+<ng-container *ngIf="(lines | async); let lineList">
+    <pre>
+        {{ lineList | json}}
+    </pre>
+</ng-container>

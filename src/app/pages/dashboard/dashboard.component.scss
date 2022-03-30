@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    margin-bottom: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+.cabecera-title{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+.coin-card {
+    min-width: 150px;
+    max-width: 300px;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-align: center;
+
+    &:hover .mat-card-actions{
+        display: flex;
+    }
+}
+
+.mat-card-actions {
+    display: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+}
+.button {
+    display: flex;
+    border-radius: 5px;
+    background-color: transparent !important;
+    border: none;
+    color: #4A9AFF;
+    
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    &:hover {
+        cursor: pointer;
+        background-color: #EAEAEA !important;
+    }
+}

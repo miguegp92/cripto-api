@@ -21,19 +21,9 @@
       "name": "Monero"
     },
     {
-      "id": 5,
-      "acronym": "REQ",
-      "name": "Request"
-    },
-    {
       "id": 6,
-      "acronym": "BNK",
-      "name": "Bankera"
-    },
-    {
-      "id": 7,
-      "acronym": "IOT",
-      "name": "IOTA"
+      "name": "Bankeras",
+      "acronym": "BNK"
     },
     {
       "id": 8,
@@ -95,18 +85,6 @@
       "portfolioId": 2,
       "coinId": 3,
       "amount": 5
-    },
-    {
-      "id": 6,
-      "portfolioId": 2,
-      "coinId": 7,
-      "amount": 4.8
-    },
-    {
-      "id": 7,
-      "portfolioId": 3,
-      "coinId": 5,
-      "amount": 6
     },
     {
       "id": 8,

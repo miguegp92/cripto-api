@@ -1,0 +1,37 @@
+
+<ng-container *ngIf="mode === 'delete'">
+    <h1 mat-dialog-title>Eliminar {{dataContext.name}}</h1>
+    <div mat-dialog-content>¿Desea eliminar el siguiente elemento?.</div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close color="secondary">Cancelar</button>
+      <button mat-button color="primary"  (click)="deleteItem()">Aceptar</button>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="mode === 'edit' || mode === 'add'">
+
+    <h1 mat-dialog-title *ngIf="mode === 'edit'; else titleNewCoin">
+        Editar {{dataContext.name}}
+    </h1>
+    <ng-template #titleNewCoin><h1>Añadir nueva Moneda</h1></ng-template>
+    
+
+    <form [formGroup]="itemForm" (ngSubmit)="mode === 'edit' ? updateItem() : postItem()">
+        <div mat-dialog-content>
+            <mat-form-field appearance="fill" *ngIf="path === 'coins'">
+                <mat-label>Acrónimo</mat-label>
+                <input matInput [value]="dataContext?.acronym" formControlName="acronym">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput [value]="dataContext?.name" formControlName="name">
+              </mat-form-field>
+        </div>
+
+      </form>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close color="secondary">Cancelar</button>
+      <button mat-button (click)="mode === 'edit' ? updateItem() : postItem()">Aceptar</button>
+    </div>
+</ng-container>
