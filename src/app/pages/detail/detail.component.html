@@ -1,0 +1,47 @@
+<a href="#" (click)="goBack()">
+  Volver atrás
+</a>
+<!-- <mat-spinner class="spinner" *ngIf="loading"></mat-spinner> -->
+<mat-card class="example-card" *ngIf="(item | async) as portfolio">
+  <mat-card-header>
+    <mat-card-title>{{ portfolio.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <button class="button button-add" (click)="toogleFormAddCoin = !toogleFormAddCoin">
+      <mat-icon>library_add</mat-icon>
+      Añadir Moneda
+    </button>
+    <div *ngIf="toogleFormAddCoin" class="add-line">
+      <mat-form-field appearance="fill">
+        <mat-label>Monedas</mat-label>
+        <mat-select [(ngModel)]="coinSelected" name="addLine">
+          <mat-option *ngFor="let coin of coinsToAdd" [value]="coin.id">
+            {{coin.name}} ({{coin.acronym}})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Cantidad</mat-label>
+        <input matInput [(ngModel)]="coinAmount" type="number" step="0.1" [value]="0.0">
+      </mat-form-field>
+      <button class="button button-delete" mat-icon-button (click)="addLine()">
+        <mat-icon aria-hidden="false" aria-label="save">save</mat-icon> Guardar
+      </button>
+
+    </div>
+
+
+    <div *ngIf="lines | async as lineCoins" class="line-container">
+      <div *ngFor="let coin of lineCoins" class="line-element">
+        <div class="line-description">{{coin.name}} ({{coin.acronym}}) - {{coin.amount}} ({{values[coin.acronym]}} €)
+        </div>
+        <div class="line-actions">
+          <button class="button button-delete" mat-icon-button (click)="deleteLine(coin)">
+            <mat-icon aria-hidden="false" aria-label="delete">delete</mat-icon> Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+</mat-card>

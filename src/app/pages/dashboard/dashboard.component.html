@@ -1,15 +1,16 @@
 <ng-container *ngIf="(coins | async); let coinList">
     <h2 class="cabecera-title">
-        Coins 
-        
+        Coins
+
         <button class="button button-add" (click)="addCoin()">
-        <mat-icon>library_add</mat-icon>
-        Añadir
-    </button></h2>
+            <mat-icon>library_add</mat-icon>
+            Añadir
+        </button>
+    </h2>
     <div class="container">
         <div>
-            
-            
+
+
         </div>
         <mat-card class="coin-card" *ngFor="let coin of coinList">
             <mat-card-title>
@@ -18,7 +19,7 @@
             <mat-card-content>
                 {{ coin.name }}
             </mat-card-content>
-            
+
             <mat-card-footer>
                 <mat-card-actions>
                     <button class="button button-edit" mat-icon-button (click)="editCoin(coin)">
@@ -36,18 +37,22 @@
 
 <ng-container *ngIf="(portfolios | async); let portfolioList">
     <h2 class="cabecera-title">
-        Portfolios 
-        
+        Portfolios
+
         <button class="button button-add" (click)="addPortFolio()">
-        <mat-icon>library_add</mat-icon>
-        Añadir
-    </button></h2>
+            <mat-icon>library_add</mat-icon>
+            Añadir
+        </button>
+    </h2>
     <div class="container">
 
         <mat-card class="coin-card" *ngFor="let item of portfolioList">
             <mat-card-header>
                 <mat-card-title>
-                    {{ item.name }}
+                    <a href="#" [routerLink]="['/detail', item.id]">
+                        {{ item.name }}
+                    </a>
+
                 </mat-card-title>
             </mat-card-header>
             <mat-card-footer>
@@ -63,13 +68,4 @@
         </mat-card>
     </div>
 
-</ng-container>
-
-<ng-container *ngIf="(lines | async); let lineList">
-    <pre>
-        {{ lineList | json}}
-    </pre>
-    <pre>
-        {{ getTypeStore('portfolios') | json }}
-    </pre>
 </ng-container>

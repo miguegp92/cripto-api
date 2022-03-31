@@ -53,6 +53,10 @@
     {
       "id": 3,
       "name": "Portfolio 3"
+    },
+    {
+      "id": 4,
+      "name": "Portfolio 4"
     }
   ],
   "lines": [
@@ -67,12 +71,6 @@
       "portfolioId": 1,
       "coinId": 6,
       "amount": 20.3
-    },
-    {
-      "id": 3,
-      "portfolioId": 1,
-      "coinId": 8,
-      "amount": 9.2
     },
     {
       "id": 4,
@@ -97,6 +95,18 @@
       "portfolioId": 3,
       "coinId": 10,
       "amount": 10
+    },
+    {
+      "portfolioId": "1",
+      "coinId": 3,
+      "amount": 20.5,
+      "id": 10
+    },
+    {
+      "portfolioId": "4",
+      "coinId": 2,
+      "amount": 5,
+      "id": 11
     }
   ]
 }

@@ -34,7 +34,7 @@ export class DashboardService extends HttpService {
 
   getCoinValue(fsym: string, tsyms: string = 'EUR'): Observable<any> {
     const url = `https://min-api.cryptocompare.com/data/price?fsym=${fsym}&tsyms=${tsyms}`
-    return this.http.get(url).pipe(map((response: any) => {debugger; return response[tsyms]} ))
+    return this.http.get(url).pipe(map((response: any) => { return response[tsyms]} ))
   }
 
   getStore(path: string, id?: number){

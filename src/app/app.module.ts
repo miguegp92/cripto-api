@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
-import { DialogComponent } from './pages/shared/dialog/dialog/dialog.component';
+import { DetailModule } from './pages/detail/detail.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -18,7 +20,10 @@ import { DialogComponent } from './pages/shared/dialog/dialog/dialog.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    DashboardModule
+    DashboardModule,
+    DetailModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,7 +14,7 @@
     <h1 mat-dialog-title *ngIf="mode === 'edit'; else titleNewCoin">
         Editar {{dataContext.name}}
     </h1>
-    <ng-template #titleNewCoin><h1>Añadir nueva Moneda</h1></ng-template>
+    <ng-template #titleNewCoin><h1>Añadir {{path === 'coins' ? 'nueva moneda' : 'nuevo portfolio'}}</h1></ng-template>
     
 
     <form [formGroup]="itemForm" (ngSubmit)="mode === 'edit' ? updateItem() : postItem()">

@@ -51,7 +51,7 @@ export class DialogComponent implements OnInit {
 
         next: (data: any) => console.log(data),
         error: (e: any) => console.error(e),
-        complete: () => this.close(this.itemForm.value)
+        complete: () => this.close()
       });
   }
 
@@ -60,7 +60,7 @@ export class DialogComponent implements OnInit {
       {
         next: (data: any) => console.log(data),
         error: (e: any) => console.error(e),
-        complete: () => this.close(this.itemForm.value)
+        complete: () => this.close()
       });
   }
 
@@ -69,13 +69,13 @@ export class DialogComponent implements OnInit {
       {
         next: (data: any) => console.log(data),
         error: (e: any) => console.error(e),
-        complete: () => this.close([])
+        complete: () => this.close()
       });
   }
 
-  close(response: any): void {
+  close(): void {
 
-    this.dialogRef.close(response);
+    this.dialogRef.close(this.path);
   }
 
 }

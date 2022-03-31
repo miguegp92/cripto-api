@@ -31,7 +31,16 @@ export class DashboardComponent implements OnInit {
   init(){
       this.coins = this._dashboardService.get('coins');
       this.portfolios = this._dashboardService.get('portfolios');
-      this.lines = this._dashboardService.get('lines');
+      // this.lines = this._dashboardService.get('lines');
+  }
+
+  reload(path: string){
+    const launch: any = {
+      'coins': () => this.coins = this._dashboardService.get('coins'),
+      'portfolios': () =>  this.portfolios = this._dashboardService.get('portfolios'),
+      'lines': () =>  this.lines = this._dashboardService.get('lines'),
+    }
+    return launch[path]();
   }
 
   getTypeStore(type: string){
@@ -67,8 +76,8 @@ export class DashboardComponent implements OnInit {
   openDialog(mode: string, path: string, context?: any) {
     const dialogRef = this.dialog.open(DialogComponent, {data: {mode: mode, path: path, data: context || null}});
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.init();
+    dialogRef.afterClosed().subscribe( (init) => {
+      this.reload(init);
     });
 
   }

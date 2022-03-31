@@ -1,0 +1,35 @@
+.example-card, .add-line {
+  margin-top: 20px;
+}
+
+.line-element, .add-line{
+  display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0 25px;
+}
+
+.add-line{
+  justify-content: space-between;
+}
+
+.line-actions{
+  margin-left: auto;
+}
+
+.button {
+  display: flex;
+  border-radius: 5px;
+  background-color: transparent !important;
+  border: none;
+  color: #4A9AFF;
+  
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  &:hover {
+      cursor: pointer;
+      background-color: #EAEAEA !important;
+  }
+}
