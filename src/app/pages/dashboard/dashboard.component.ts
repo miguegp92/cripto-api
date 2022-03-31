@@ -5,6 +5,8 @@ import { Coin } from 'src/app/core/config/request.model';
 import { Observable } from 'rxjs';
 import { DialogComponent } from '../shared/dialog/dialog/dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import { NotificationService } from 'src/app/core/services/notification.service';
+import { SpinnerService } from 'src/app/core/services/spinner.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,17 +23,20 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private _dashboardService: DashboardService
+    private _dashboardService: DashboardService, private spinner: SpinnerService,
+    private notification: NotificationService
   ) { }
 
   ngOnInit(): void {
     this.init();
   }
 
-  init(){
+  async init(){
+      this.spinner.toggle(true);
       this.coins = this._dashboardService.get('coins');
       this.portfolios = this._dashboardService.get('portfolios');
       // this.lines = this._dashboardService.get('lines');
+      this.spinner.toggle(false);
   }
 
   reload(path: string){
@@ -77,7 +82,9 @@ export class DashboardComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogComponent, {data: {mode: mode, path: path, data: context || null}});
 
     dialogRef.afterClosed().subscribe( (init) => {
+      this.spinner.toggle(true);
       this.reload(init);
+      this.spinner.toggle(false);
     });
 
   }

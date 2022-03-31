@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "nasa_api_rest": {
+    "cripto-api": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/nasa_api_rest",
+            "outputPath": "dist/cripto-api",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "nasa_api_rest:build:production"
+              "browserTarget": "cripto-api:build:production"
             },
             "development": {
-              "browserTarget": "nasa_api_rest:build:development"
+              "browserTarget": "cripto-api:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nasa_api_rest:build"
+            "browserTarget": "cripto-api:build"
           }
         },
         "test": {
@@ -109,5 +109,5 @@
       }
     }
   },
-  "defaultProject": "nasa_api_rest"
+  "defaultProject": "cripto-api"
 }

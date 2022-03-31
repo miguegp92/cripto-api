@@ -3,9 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { DetailService } from './detail.service';
-import { concatMap, Observable, switchMap, mergeMap } from 'rxjs';
+import { concatMap, Observable, switchMap, mergeMap, catchError } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../shared/dialog/dialog/dialog.component';
+import { SpinnerService } from 'src/app/core/services/spinner.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -21,7 +23,8 @@ export class DetailComponent implements OnInit {
   toogleFormAddCoin: boolean = false;
   coinSelected: any = 0;
   coinAmount: number = 0;
-  constructor(public dialog: MatDialog, private _detailService: DetailService, private _dashboardService: DashboardService, private route: ActivatedRoute) { }
+  constructor(public dialog: MatDialog, private _detailService: DetailService, private _dashboardService: DashboardService, private route: ActivatedRoute, private spinner: SpinnerService,
+    private notification: NotificationService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -45,16 +48,22 @@ export class DetailComponent implements OnInit {
   }
 
   addLine() {
+    this.spinner.toggle(true);
     const line = {
       portfolioId: this.id,
       coinId: this.coinSelected,
       amount: this.coinAmount
     }
     this._detailService.postsData(line).subscribe(response => {
+      this.spinner.toggle(false);
+      this.notification.showNotificationSuccess()
       this.toogleFormAddCoin = false;
       this.coinSelected = 0;
       this.coinAmount = 0;
       this.reloadLines()
+    }, (e: any) => {
+      this.spinner.toggle(false);
+      this.notification.showNotificationError()
     });
 
   }
@@ -74,8 +83,10 @@ export class DetailComponent implements OnInit {
 
   }
 
-  private reloadLines() {
+   private async reloadLines() {
+    this.spinner.toggle(true);
     this.lines = this._detailService.getLines(this.id);
     this.getValueCoin()
+    this.spinner.toggle(false);
   }
 }

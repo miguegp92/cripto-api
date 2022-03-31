@@ -2,6 +2,8 @@ import { DialogService } from './dialog.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl } from '@angular/forms';
+import { NotificationService } from 'src/app/core/services/notification.service';
+import { SpinnerService } from 'src/app/core/services/spinner.service';
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -13,12 +15,6 @@ export class DialogComponent implements OnInit {
   dataContext: any = undefined;
   path: string = '';
 
-  // itemForm = new FormGroup({
-  //   id: new FormControl(''),
-  //   name: new FormControl(''),
-  //   acronym: new FormControl(''),
-  // });
-
   itemForm = new FormGroup({
     id: new FormControl(''),
     name: new FormControl(''),
@@ -27,7 +23,8 @@ export class DialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private _dialogService: DialogService
+    private _dialogService: DialogService, private spinner: SpinnerService,
+    private notification: NotificationService
   ) {
     this.mode = this.data.mode;
     this.dataContext = this.data.data;
@@ -48,9 +45,8 @@ export class DialogComponent implements OnInit {
 
     this._dialogService.postMethod(this.path, this.itemForm.value).subscribe(
       {
-
-        next: (data: any) => console.log(data),
-        error: (e: any) => console.error(e),
+        next: (data: any) => this.notification.showNotificationSuccess(),
+        error: (e: any) => this.notification.showNotificationError(),
         complete: () => this.close()
       });
   }
@@ -58,8 +54,8 @@ export class DialogComponent implements OnInit {
   updateItem() {
     this._dialogService.putMethod(`${this.path}/${this.dataContext.id}`, this.itemForm.value).subscribe(
       {
-        next: (data: any) => console.log(data),
-        error: (e: any) => console.error(e),
+        next: (data: any) => this.notification.showNotificationSuccess(),
+        error: (e: any) => this.notification.showNotificationError(),
         complete: () => this.close()
       });
   }
@@ -67,8 +63,8 @@ export class DialogComponent implements OnInit {
   deleteItem() {
     this._dialogService.deleteMethod(`${this.path}/${this.dataContext.id}`).subscribe(
       {
-        next: (data: any) => console.log(data),
-        error: (e: any) => console.error(e),
+        next: (data: any) => this.notification.showNotificationSuccess(),
+        error: (e: any) => this.notification.showNotificationError(),
         complete: () => this.close()
       });
   }

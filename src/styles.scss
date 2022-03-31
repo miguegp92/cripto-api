@@ -12,28 +12,37 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$nasa_api_rest-primary: mat.define-palette(mat.$indigo-palette);
-$nasa_api_rest-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$cripto-api-primary: mat.define-palette(mat.$indigo-palette);
+$cripto-api-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$nasa_api_rest-warn: mat.define-palette(mat.$red-palette);
+$cripto-api-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$nasa_api_rest-theme: mat.define-light-theme((
+$cripto-api-theme: mat.define-light-theme((
   color: (
-    primary: $nasa_api_rest-primary,
-    accent: $nasa_api_rest-accent,
-    warn: $nasa_api_rest-warn,
+    primary: $cripto-api-primary,
+    accent: $cripto-api-accent,
+    warn: $cripto-api-warn,
   )
 ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($nasa_api_rest-theme);
+@include mat.all-component-themes($cripto-api-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.spinner{
+  position: fixed !important;
+  /* margin: auto; */
+  z-index: 999999  !important;
+  top: 50%;
+  left: 50%;
+}

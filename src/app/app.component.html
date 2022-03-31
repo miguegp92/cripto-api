@@ -1,5 +1,6 @@
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
+<div [ngStyle]="{'opacity' : spinner.showSpinner ? 0.4 : 1}">
+  <div class="toolbar" role="banner">
   <img
     width="40"
     alt="Angular Logo"
@@ -10,10 +11,14 @@
  
 </div>
 <div class="content" role="main">
-
   <!-- Router Outlet -->
   <router-outlet></router-outlet>
 
+
 </div>
+</div>
+<mat-spinner class="spinner" *ngIf="spinner.showSpinner"></mat-spinner>
 
-
+<ng-template #templateSnack>
+  <p *ngFor="let msg of messagesSnack">{{msg}}</p>
+</ng-template>
