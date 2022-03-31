@@ -32,12 +32,16 @@ export class DashboardComponent implements OnInit {
       this.coins = this._dashboardService.get('coins');
       this.portfolios = this._dashboardService.get('portfolios');
       this.lines = this._dashboardService.get('lines');
+  }
 
+  getTypeStore(type: string){
+    return this._dashboardService.getStore(type)
   }
 
   addCoin(){
     this.openDialog('add','coins');
   }
+
   addPortFolio(){
     this.openDialog('add','portfolios');
   }

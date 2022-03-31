@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class HttpService {
 
   request: string = environment.apiURL;
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
   public getMethod(path: any, options?: any): Observable<any>  {
     const url = `${this.request}/${path}`;

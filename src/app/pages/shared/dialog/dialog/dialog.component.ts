@@ -35,7 +35,6 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
     if (this.path === 'coins') {
       this.itemForm.addControl('acronym', new FormControl(''));
     }
